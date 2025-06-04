@@ -12,11 +12,16 @@
       background-color: #fdf4ff;
       color: #4b0082;
       padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     h2 {
       color: #7e57c2;
       margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .section {
@@ -25,6 +30,11 @@
       margin-bottom: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-3px);
     }
 
     label {
@@ -44,54 +54,58 @@
       margin-bottom: 10px;
       background-color: #f8eafc;
       color: #4a148c;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus {
+      border-color: #9c27b0;
+      box-shadow: 0 0 0 2px rgba(156, 39, 176, 0.2);
     }
 
     td input[type="text"] {
-  width: 80px; /* 👈 hoặc điều chỉnh nhỏ hơn tùy thích */
-  padding: 6px 10px;
-  border: 1px solid #ce93d8;
-  border-radius: 10px;
-  background-color: #f8eafc;
-  color: #4a148c;
-  text-align: center;
-  box-sizing: border-box;
-}
+      width: 80px;
+      padding: 6px 10px;
+      border: 1px solid #ce93d8;
+      border-radius: 10px;
+      background-color: #f8eafc;
+      color: #4a148c;
+      text-align: center;
+      box-sizing: border-box;
+      transition: all 0.3s;
+    }
 
-#answerForm {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 10px;
-}
+    #answerForm {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 10px;
+    }
 
-.answer-table {
-  flex: 1 1 300px;
-  border-collapse: collapse;
-}
+    .answer-table {
+      flex: 1 1 300px;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
 
-.answer-table th,
-.answer-table td {
-  border: 1px solid #ce93d8;
-  padding: 8px;
-  text-align: center;
-  background-color: #fce4ec;
-  color: #6a1b9a;
-}
+    .answer-table th,
+    .answer-table td {
+      border: 1px solid #ce93d8;
+      padding: 8px;
+      text-align: center;
+      background-color: #fce4ec;
+      color: #6a1b9a;
+    }
 
-.answer-table th {
-  background-color: #e1bee7;
-}
+    .answer-table th {
+      background-color: #e1bee7;
+    }
 
-td input[type="text"] {
-  width: 80px;
-  padding: 6px 10px;
-  border: 1px solid #ce93d8;
-  border-radius: 10px;
-  background-color: #f8eafc;
-  color: #4a148c;
-  text-align: center;
-  box-sizing: border-box;
-}
+    .correct-answer {
+      font-size: 0.8em;
+      color: #2e7d32;
+      font-weight: bold;
+    }
 
     input[type="file"] {
       display: none;
@@ -106,6 +120,12 @@ td input[type="text"] {
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+
+    .file-upload:hover {
+      background-color: #b39ddb;
+      transform: translateY(-2px);
     }
 
     button {
@@ -117,11 +137,16 @@ td input[type="text"] {
       cursor: pointer;
       font-size: 16px;
       margin-top: 10px;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     button:hover {
       background-color: #ab47bc;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     table {
@@ -149,7 +174,72 @@ td input[type="text"] {
       border-radius: 12px;
       font-weight: bold;
       color: #4a148c;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      animation: fadeIn 0.5s ease;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #fileNameDisplay {
+      margin-top: 10px;
+      padding: 8px;
+      background-color: #e1bee7;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+    }
+
+    .error-message {
+      color: #d32f2f;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .ggsheet-section {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #e3f2fd;
+      border-radius: 10px;
+    }
+    
+    .ggsheet-input {
+      width: calc(100% - 24px);
+      padding: 8px 12px;
+      border: 1px solid #90caf9;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .sync-info {
+      font-size: 0.9em;
+      color: #0d47a1;
+      margin-top: 5px;
+    }
+    
+    .last-sync {
+      font-size: 0.8em;
+      color: #546e7a;
+      margin-top: 5px;
+    }
+
   </style>
 </head>
 <body>
@@ -157,136 +247,256 @@ td input[type="text"] {
     <h2><i class="fas fa-edit"></i> 📝 Phần Bài Làm</h2>
     <label for="numQuestions">🔢 Số câu hỏi:</label>
     <input type="number" id="numQuestions" min="1" placeholder="Nhập số câu" />
-    <button onclick="generateAnswerSheet()"><i class="fas fa-table"></i> ✨ Tạo bảng</button>
+    <div class="button-group">
+      <button onclick="generateAnswerSheet()"><i class="fas fa-table"></i> ✨ Tạo bảng</button>
+      <button onclick="resetForm()" style="background-color: #f44336;"><i class="fas fa-redo"></i> 🔄 Reset</button>
+    </div>
     <form id="answerForm"></form>
   </div>
 
   <div class="section">
     <h2><i class="fas fa-file-import"></i> 📥 Phần Đáp Án</h2>
+
     <label class="file-upload">
       <i class="fas fa-upload"></i> Chọn file Excel
       <input type="file" id="excelFile" accept=".xlsx, .xls" />
     </label>
+
     <div id="fileNameDisplay"></div>
+    <div id="excelError" class="error-message"></div>
+
+    <h2 style="margin-top: 30px;">🌐 Dán link Google Sheet</h2>
+    <input type="text" id="sheetLink" placeholder="Dán link Google Sheet" style="width: 60%;" />
+    <button onclick="loadData()">Tải dữ liệu</button>
+
+    <div id="sheetData"></div>
+
     <div style="margin-top: 10px">
       <label for="pointPerCorrect">🎯 Điểm mỗi câu đúng:</label>
-      <input type="number" id="pointPerCorrect" value="1" step="0.1" placeholder="VD: 0.5, 1..." />
+      <input type="number" id="pointPerCorrect" value="1" step="0.1" min="0.1" placeholder="VD: 0.5, 1..." />
     </div>
-    <button onclick="generateCorrectAnswerTable()"><i class="fas fa-table"></i> 📋 Tạo bảng đáp án</button>
+    <div class="button-group">
+      <button onclick="generateCorrectAnswerTable()"><i class="fas fa-table"></i> 📋 Tạo bảng đáp án</button>
+      <button onclick="gradeAnswers()"><i class="fas fa-check-circle"></i> ✅ Chấm bài</button>
+      <button onclick="exportResults()"><i class="fas fa-file-export"></i> 📤 Xuất kết quả Excel</button>
+    </div>
     <form id="correctAnswerForm" style="margin-top: 10px;"></form>
 
-    <button onclick="gradeAnswers()"><i class="fas fa-check-circle"></i> ✅ Chấm bài</button>
-    <div id="result" style="display: none;"><i class="fas fa-chart-line"></i> <span id="resultText"></span></div>
+    <div id="result"><i class="fas fa-chart-line"></i> <span id="resultText"></span></div>
   </div>
 
   <script>
     let correctAnswers = {};
+    
+    function resetForm() {
+      if (confirm('Bạn có chắc muốn reset toàn bộ dữ liệu?')) {
+        document.getElementById('numQuestions').value = '';
+        document.getElementById('answerForm').innerHTML = '';
+        document.getElementById('correctAnswerForm').innerHTML = '';
+        document.getElementById('excelFile').value = '';
+        document.getElementById('fileNameDisplay').textContent = '';
+        document.getElementById('result').style.display = 'none';
+        document.getElementById('excelError').textContent = '';
+        correctAnswers = {};
+      }
+    }
 
     function generateAnswerSheet() {
-  const form = document.getElementById('answerForm');
-  const num = parseInt(document.getElementById('numQuestions').value);
-  form.innerHTML = '';
+      const form = document.getElementById('answerForm');
+      const num = parseInt(document.getElementById('numQuestions').value);
+      
+      if (!num || num <= 0) {
+        alert("⚠️ Vui lòng nhập số câu hỏi hợp lệ (lớn hơn 0)");
+        return;
+      }
+      
+      form.innerHTML = '';
 
-  const table = document.createElement('table');
-  table.className = 'answer-table';
+      const table = document.createElement('table');
+      table.className = 'answer-table';
 
-  const sttRow = document.createElement('tr');
-  const ansRow = document.createElement('tr');
+      const sttRow = document.createElement('tr');
+      const ansRow = document.createElement('tr');
+      const correctAnsRow = document.createElement('tr');
 
-  let count = 0;
+      let count = 0;
 
-  for (let i = 1; i <= num; i++) {
-    const sttCell = document.createElement('td');
-    sttCell.textContent = i;
-    sttRow.appendChild(sttCell);
+      for (let i = 1; i <= num; i++) {
+        const sttCell = document.createElement('td');
+        sttCell.textContent = i;
+        sttRow.appendChild(sttCell);
 
-    const ansCell = document.createElement('td');
-    ansCell.innerHTML = `<input type="text" name="answer_${i}" maxlength="10" placeholder="Nhập đáp án" />`;
-    ansRow.appendChild(ansCell);
+        const ansCell = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = `answer_${i}`;
+        input.maxLength = 10;
+        input.placeholder = 'Nhập đáp án';
+        ansCell.appendChild(input);
+        ansRow.appendChild(ansCell);
 
-    count++;
+        const correctAnsCell = document.createElement('td');
+        correctAnsCell.className = 'correct-answer';
+        correctAnsCell.id = `correctAnswer_${i}`;
+        correctAnsRow.appendChild(correctAnsCell);
 
-    if (count === 5 || i === num) {
-      table.appendChild(sttRow.cloneNode(true));
-      table.appendChild(ansRow.cloneNode(true));
-      count = 0;
-      sttRow.innerHTML = '';
-      ansRow.innerHTML = '';
+        count++;
+
+        if (count === 5 || i === num) {
+          table.appendChild(sttRow.cloneNode(true));
+          table.appendChild(ansRow.cloneNode(true));
+          table.appendChild(correctAnsRow.cloneNode(true));
+          count = 0;
+          sttRow.innerHTML = '';
+          ansRow.innerHTML = '';
+          correctAnsRow.innerHTML = '';
+        }
+      }
+
+      form.appendChild(table);
+      updateCorrectAnswerDisplay();
     }
-  }
-
-  form.appendChild(table);
-}
-
-
 
     document.getElementById('excelFile').addEventListener('change', function (e) {
   const file = e.target.files[0];
   if (!file) return;
+
   document.getElementById('fileNameDisplay').textContent = `📂 Đã chọn: ${file.name}`;
+  document.getElementById('excelError').textContent = '';
   const reader = new FileReader();
 
   reader.onload = function (e) {
-    const data = new Uint8Array(e.target.result);
-    const workbook = XLSX.read(data, { type: 'array' });
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    try {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-    correctAnswers = {};
-
-    if (json.length === 0) {
-      alert('⚠️ File Excel trống.');
-      return;
+      parseData(json);
+      alert(`✅ Đã tải ${Object.keys(correctAnswers).length} đáp án từ file Excel`);
+    } catch (error) {
+      console.error('Lỗi khi đọc file Excel:', error);
+      document.getElementById('excelError').textContent = '⚠️ Lỗi khi đọc file Excel. Vui lòng kiểm tra lại file.';
     }
+  };
 
-    // Kiểm tra chiều ngang: 2 dòng, dòng 1 là số câu, dòng 2 là đáp án
-    if (json.length >= 2 && json[0].length > 0 && typeof json[0][0] !== 'undefined') {
-      const firstRow = json[0];
-      const secondRow = json[1];
-
-      const isHorizontal = firstRow.every(q => typeof q !== 'undefined' && q !== null && q.toString().trim() !== '') &&
-                           secondRow.every(a => typeof a !== 'undefined' && a !== null && a.toString().trim() !== '');
-
-      if (isHorizontal) {
-        for (let i = 0; i < firstRow.length; i++) {
-          const qNum = firstRow[i];
-          const ans = secondRow[i];
-          if (qNum && ans) {
-            correctAnswers[qNum.toString().trim()] = ans.toString().trim().toUpperCase();
-          }
-        }
-        alert('✅ Tải đáp án thành công (📏 chiều ngang)');
-        return;
-      }
-    }
-
-    // Mặc định xử lý theo chiều dọc: mỗi dòng là cặp [câu, đáp án]
-    for (let row of json) {
-      for (let i = 0; i < row.length; i += 2) {
-        const qNum = row[i];
-        const ans = row[i + 1];
-        if (qNum && ans) {
-          correctAnswers[qNum.toString().trim()] = ans.toString().trim().toUpperCase();
-        }
-      }
-    }
-    alert('✅ Tải đáp án thành công (📐 chiều dọc)');
+  reader.onerror = function () {
+    document.getElementById('excelError').textContent = '⚠️ Lỗi khi đọc file. Vui lòng thử lại.';
   };
 
   reader.readAsArrayBuffer(file);
 });
 
-      
+function loadData() {
+  document.getElementById('excelError').textContent = '';
+  const sheetLink = document.getElementById('sheetLink').value.trim();
+
+  if (sheetLink) {
+    fetch(sheetLink)
+      .then(res => {
+        if (!res.ok) throw new Error('Không thể tải file CSV.');
+        return res.text();
+      })
+      .then(csvText => {
+        // Đơn giản parse CSV thành mảng 2 chiều
+        const rows = csvText.trim().split('\n').map(row => {
+          // Xử lý đơn giản, tách theo dấu phẩy
+          // Nếu cần nâng cao, có thể dùng thư viện CSV parser
+          return row.split(',');
+        });
+        parseData(rows);
+        alert(`✅ Đã tải ${Object.keys(correctAnswers).length} đáp án từ Google Sheet CSV`);
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('excelError').textContent = '⚠️ Lỗi khi tải dữ liệu từ link Google Sheet.';
+      });
+  } else {
+    document.getElementById('excelError').textContent = '⚠️ Vui lòng nhập link Google Sheet CSV hoặc chọn file Excel.';
+  }
+}
+
+// Hàm dùng chung parse dữ liệu Excel hoặc CSV
+function parseData(json) {
+  correctAnswers = {};
+  let formatDetected = '';
+
+  if (json.length === 0) {
+    document.getElementById('excelError').textContent = '⚠️ Dữ liệu trống.';
+    return;
+  }
+
+  // KIỂM TRA ĐỊNH DẠNG NGANG (dòng 1 là số câu, dòng 2 là đáp án)
+  if (json.length >= 2) {
+    const questionRow = json[0];
+    const answerRow = json[1];
+
+    let validPairs = 0;
+    let isHorizontalFormat = true;
+
+    for (let i = 0; i < Math.max(questionRow.length, answerRow.length); i++) {
+      const qNum = questionRow[i];
+      const ans = answerRow[i];
+
+      const isQNumValid = typeof qNum === 'number' || !isNaN(parseInt(qNum));
+      const isAnsValid = typeof ans === 'string' && /^[A-Z]$/i.test(ans.toUpperCase());
+
+      if (isQNumValid && isAnsValid) {
+        correctAnswers[qNum.toString().trim()] = ans.toString().trim().toUpperCase();
+        validPairs++;
+      } else if (qNum || ans) {
+        isHorizontalFormat = false;
+        break;
+      }
+    }
+
+    if (isHorizontalFormat && validPairs >= 3) {
+      formatDetected = 'ngang (dòng 1 là số câu, dòng 2 là đáp án)';
+    } else {
+      correctAnswers = {};
+    }
+  }
+
+  // KIỂM TRA ĐỊNH DẠNG DỌC (tự động nhận biết có tiêu đề hay không)
+  if (!formatDetected) {
+    let startRow = 0;
+    if (json[0] && typeof json[0][0] === 'string' && json[0][0].toLowerCase().includes('câu')) {
+      startRow = 1;
+    }
+
+    for (let i = startRow; i < json.length; i++) {
+      const row = json[i];
+      if (!row || row.length < 2 || !row[0] || row[0].toString().trim() === '') continue;
+
+      const qNum = row[0].toString().trim();
+      const ans = row[1] ? row[1].toString().trim().toUpperCase() : '';
+
+      if (qNum && ans) {
+        correctAnswers[qNum] = ans;
+      }
+    }
+
+    if (Object.keys(correctAnswers).length > 0) {
+      formatDetected = 'dọc (mỗi dòng là 1 câu hỏi và đáp án)';
+    }
+  }
+
+  if (!formatDetected) {
+    document.getElementById('excelError').textContent = '⚠️ Không nhận dạng được định dạng dữ liệu.';
+    return;
+  }
+
+  console.log('📦 Đáp án tải được:', correctAnswers);
+}
+
     function gradeAnswers() {
   let correct = 0;
   let total = 0;
   let totalScore = 0;
   const pointPerCorrect = parseFloat(document.getElementById('pointPerCorrect').value) || 1;
-
   const numQuestions = parseInt(document.getElementById('numQuestions').value);
-  correctAnswers = {}; // reset lại trước mỗi lần chấm
 
-  // ✅ Lấy đáp án từ bảng nhập tay (nếu có)
+  // Lấy đáp án từ bảng nhập tay (nếu có)
   for (let i = 1; i <= numQuestions; i++) {
     const input = document.getElementById(`correct_${i}`);
     if (input && input.value.trim() !== '') {
@@ -294,85 +504,164 @@ td input[type="text"] {
     }
   }
 
-  // ✅ So sánh từng câu trả lời
+  // Cập nhật hiển thị đáp án đúng
+  updateCorrectAnswerDisplay();
+
+  // So sánh từng câu trả lời
   for (let i = 1; i <= numQuestions; i++) {
     const qNum = i.toString();
     const answerInput = document.querySelector(`input[name="answer_${qNum}"]`);
     const correctAns = correctAnswers[qNum];
+    const correctAnswerCell = document.getElementById(`correctAnswer_${qNum}`);
 
     if (answerInput && correctAns) {
       total++;
       const userAns = answerInput.value.trim().toUpperCase();
 
+      // Reset class trước khi kiểm tra
+      answerInput.classList.remove('correct', 'incorrect');
+      if (correctAnswerCell) correctAnswerCell.classList.remove('correct', 'incorrect');
+
       if (userAns === correctAns) {
-        answerInput.style.backgroundColor = '#e0f2f1'; // xanh nhạt
+        answerInput.classList.add('correct');
+        if (correctAnswerCell) correctAnswerCell.classList.add('correct');
         correct++;
         totalScore += pointPerCorrect;
       } else {
-        answerInput.style.backgroundColor = '#ffebee'; // đỏ nhạt
+        answerInput.classList.add('incorrect');
+        if (correctAnswerCell) correctAnswerCell.classList.add('incorrect');
       }
     }
   }
 
-  // ✅ Hiển thị kết quả cuối
+  // Hiển thị kết quả
   const resultBox = document.getElementById('result');
   const resultText = document.getElementById('resultText');
+
+  if (total === 0) {
+    resultText.textContent = '⚠️ Không có câu hỏi để chấm.';
+  } else {
+    const percentage = ((correct / total) * 100).toFixed(2);
+    resultText.innerHTML = `
+      Bạn đã trả lời đúng <b>${correct}</b> trên <b>${total}</b> câu.<br>
+      Tổng điểm: <span style="color: green; font-weight: bold;">${totalScore.toFixed(1)} điểm</span>.<br>
+      Tỷ lệ: <span style="color: blue;">${percentage}%</span> `;
+  }
+
   resultBox.style.display = 'flex';
-  resultText.innerText = `✅ Kết quả: ${correct}/${total} câu đúng. 🌟 Tổng điểm: ${totalScore}`;
 }
 
 
+    function generateCorrectAnswerTable() {
+      const form = document.getElementById('correctAnswerForm');
+      const num = parseInt(document.getElementById('numQuestions').value);
+      
+      if (!num || num <= 0) {
+        alert("⚠️ Vui lòng nhập số câu hỏi hợp lệ trước!");
+        return;
+      }
 
-function generateCorrectAnswerTable() {
-  const form = document.getElementById('correctAnswerForm');
-  const num = parseInt(document.getElementById('numQuestions').value);
-  if (!num || num <= 0) {
-    alert("⚠️ Vui lòng nhập số câu hỏi trước!");
-    return;
-  }
+      form.innerHTML = '';
 
-  form.innerHTML = '';
+      const table = document.createElement('table');
+      table.className = 'answer-table';
 
-  const table = document.createElement('table');
-  table.className = 'answer-table';
+      let sttRow = document.createElement('tr');
+      let ansRow = document.createElement('tr');
 
-  let sttRow = document.createElement('tr');
-  let ansRow = document.createElement('tr');
+      let count = 0;
 
-  let count = 0;
+      for (let i = 1; i <= num; i++) {
+        const sttCell = document.createElement('td');
+        sttCell.textContent = i;
+        sttRow.appendChild(sttCell);
 
-  for (let i = 1; i <= num; i++) {
-    const sttCell = document.createElement('td');
-    sttCell.textContent = i;
-    sttRow.appendChild(sttCell);
+        const ansCell = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.id = `correct_${i}`;
+        input.maxLength = 10;
+        input.placeholder = 'Nhập đáp án';
+        input.value = correctAnswers[i] || '';
+        ansCell.appendChild(input);
+        ansRow.appendChild(ansCell);
 
-    const ansCell = document.createElement('td');
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.id = `correct_${i}`;
-    input.maxLength = 10;
-    input.placeholder = 'Nhập đáp án';
-    ansCell.appendChild(input);
-    ansRow.appendChild(ansCell);
+        count++;
 
-    count++;
+        if (count === 5 || i === num) {
+          table.appendChild(sttRow);
+          table.appendChild(ansRow);
+          sttRow = document.createElement('tr');
+          ansRow = document.createElement('tr');
+          count = 0;
+        }
+      }
 
-    // Mỗi 5 cột hoặc hết thì thêm hàng vào bảng
-    if (count === 5 || i === num) {
-      table.appendChild(sttRow);
-      table.appendChild(ansRow);
-      sttRow = document.createElement('tr');
-      ansRow = document.createElement('tr');
-      count = 0;
+      form.appendChild(table);
+    }
+
+    // ========== EXPORT KẾT QUẢ ==========
+    function exportResults() {
+      const numQuestions = parseInt(document.getElementById('numQuestions').value);
+      if (!numQuestions || numQuestions <= 0) {
+        alert('Vui lòng nhập số câu hỏi hợp lệ trước khi xuất kết quả');
+        return;
+      }
+
+      // Tạo dữ liệu cho Excel
+      const data = [
+        ['Câu hỏi', 'Đáp án HS', 'Đáp án đúng', 'Kết quả']
+      ];
+
+      let correctCount = 0;
+      const pointPerCorrect = parseFloat(document.getElementById('pointPerCorrect').value) || 1;
+
+      for (let i = 1; i <= numQuestions; i++) {
+        const qNum = i.toString();
+        const answerInput = document.querySelector(`input[name="answer_${qNum}"]`);
+        const correctAns = correctAnswers[qNum];
+        const userAns = answerInput ? answerInput.value.trim().toUpperCase() : '';
+        
+        let result = '';
+        if (correctAns) {
+          if (userAns === correctAns) {
+            result = 'Đúng';
+            correctCount++;
+          } else {
+            result = 'Sai';
+          }
+        }
+
+        data.push([
+          qNum,
+          userAns,
+          correctAns || '',
+          result
+        ]);
+      }
+
+      // Tính tổng điểm
+      const totalScore = (correctCount * pointPerCorrect).toFixed(1);
+      data.push([], ['Tổng câu đúng', correctCount], ['Tổng điểm', totalScore]);
+
+      // Tạo workbook
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.aoa_to_sheet(data);
+      XLSX.utils.book_append_sheet(wb, ws, "Kết quả chấm bài");
+
+      // Xuất file
+      const fileName = `KetQuaChamBai_${new Date().toISOString().slice(0, 10)}.xlsx`;
+      XLSX.writeFile(wb, fileName);
+    }
+    
+    function updateCorrectAnswerDisplay() {
+  for (const qNum in correctAnswers) {
+    const correctAnswerCell = document.getElementById(`correctAnswer_${qNum}`);
+    if (correctAnswerCell) {
+      correctAnswerCell.textContent = correctAnswers[qNum];
     }
   }
-
-  form.appendChild(table);
 }
-
-
-</script>
-
 
   </script>
 </body>
